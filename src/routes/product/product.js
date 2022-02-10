@@ -1,9 +1,17 @@
 const router = require('express').Router();
-const { Product, Client } = require('../../db')
+const { Product, Categories } = require('../../db')
 
 
 const getInfo = async () => {
-    return await Product.findAll()
+    return await Product.findAll({
+        include:{
+            model: Categories,
+            attributes: ['name'],
+            through: {
+                attributes:[]
+            }
+        }
+    })
 }
 
 router.get('/', async (req, res) => {

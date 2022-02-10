@@ -1,8 +1,7 @@
 const router = require('express').Router();
-const { Categories, Product } = require('../../db')
+const { Product ,Categories } = require('../../db')
 
 router.post('/', async (req,res) => {
-    try {
         let {
             product,
             img,
@@ -18,20 +17,25 @@ router.post('/', async (req,res) => {
             description,
             quantity,
             price,
-            // category
         })
         
         let categoryType = await Categories.findAll({
             where : {name:category}
         })
-        productCreated.addCategory(categoryType)
+
+        if(categoryType.length === 0) {
+            const newCategory = await Categories.create({
+                name: category
+            })
+            await productCreated.addCategories(newCategory)
+        } else {
+            await productCreated.addCategories(categoryType)
+        }
+
+        productCreated.addCategories(categoryType)
         res.status(200).send('Producto creado')
-    } 
-
-    catch {
+        
         res.status(400).send('Error')
-    }
-
 })
 
 module.exports = router;
