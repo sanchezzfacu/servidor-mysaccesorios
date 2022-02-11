@@ -5,14 +5,11 @@ router.post('/', async (req,res) => {
     try {
         let {
             name,
-            img
         } = req.body
         let total = req.body
-        console.log(total)
 
         let categoryCreated = await Categories.create({
             name,
-            img
         })
         res.status(200).send('Categoria creada satisfactoriamente')
     }
