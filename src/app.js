@@ -24,7 +24,7 @@ server.use((req, res, next) => {
   next();
 });
 
-server.use('/.netlify/functions/app', routes);
+server.use('/', routes);
 
 // Error catching endware.
 server.use((err, req, res, next) => { // eslint-disable-line no-unused-vars
@@ -34,4 +34,4 @@ server.use((err, req, res, next) => { // eslint-disable-line no-unused-vars
   res.status(status).send(message);
 });
 
-module.exports.handler = serverless(server);
+module.exports = server
