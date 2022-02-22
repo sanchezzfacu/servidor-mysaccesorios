@@ -8,7 +8,6 @@ require('./db.js');
 
 const server = express();
 
-const serverless = require('serverless-http')
 
 server.name = 'API';
 
