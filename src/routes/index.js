@@ -1,6 +1,5 @@
 const { Router } = require('express');
 const router = Router();
-const serverless = require('serverless-http')
 
 
 //PRODUCT
