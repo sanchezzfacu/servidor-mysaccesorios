@@ -7,9 +7,15 @@ const {DB_USER, DB_PASSWORD, DB_HOST, DB_NAME} = process.env;
 if (process.env.DATABASE_URL) {
   // the application is executed on Heroku ... use the postgres database
   sequelize = new Sequelize(process.env.DATABASE_URL, {
-    dialect:  'postgres',
+    dialectOptions: {
+      ssl: {
+        require: true,
+        rejectUnauthorized: false,
+      },
+      keepAlive: true,
+    },
     protocol: 'postgres',
-    logging:  false //false
+    logging:  true //false
   });
 } else {
   // the application is executed on the local machine
