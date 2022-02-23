@@ -5,7 +5,6 @@ const path = require('path');
 const {DB_USER, DB_PASSWORD, DB_HOST, DB_NAME} = process.env;
 
 if (process.env.DATABASE_URL) {
-  // the application is executed on Heroku ... use the postgres database
   sequelize = new Sequelize(process.env.DATABASE_URL, {
     dialectOptions: {
       ssl: {
@@ -14,6 +13,7 @@ if (process.env.DATABASE_URL) {
       },
       keepAlive: true,
     },
+    ssl: true,
     protocol: 'postgres',
     logging:  true //false
   });
