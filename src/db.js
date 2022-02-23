@@ -11,9 +11,7 @@ if (process.env.DATABASE_URL) {
         require: true,
         rejectUnauthorized: false,
       },
-      keepAlive: true,
     },
-    ssl: true,
     protocol: 'postgres',
     logging:  true //false
   });
