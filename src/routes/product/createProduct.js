@@ -23,19 +23,10 @@ router.post('/', async (req,res) => {
             where : {name:category}
         })
 
-        if(categoryType.length === 0) {
-            const newCategory = await Categories.create({
-                name: category
-            })
-            await productCreated.addCategories(newCategory)
-        } else {
-            await productCreated.addCategories(categoryType)
-        }
+        const newCategory = await productCreated.addCategories(categoryType)
 
         productCreated.addCategories(categoryType)
-        res.status(200).send('Producto creado')
-        
-        res.status(400).send('Error')
+        res.send('Producto creado')        
 })
 
 module.exports = router;
