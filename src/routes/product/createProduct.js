@@ -23,7 +23,6 @@ router.post('/', async (req,res) => {
             where : {name:category}
         })
 
-        const newCategory = await productCreated.addCategories(categoryType)
 
         productCreated.addCategories(categoryType)
         res.send('Producto creado')        
