@@ -23,7 +23,7 @@ router.post('/', async (req,res) => {
             })
             console.log(categoryType)
     
-            const newCategory = await productCreated.addCategories(categoryType)
+            productCreated.addCategories(categoryType)
     
             res.send('Producto creado')        
 
