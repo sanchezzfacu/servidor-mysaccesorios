@@ -21,15 +21,15 @@ router.post('/', async (req,res) => {
             let categoryType = await Categories.findAll({
                 where : {name:category}
             })
-            console.log(categoryType)
-    
+            
             productCreated.addCategories(categoryType)
+            console.log(productCreated)
     
             res.send('Producto creado')        
 
         }
 
-        catch(error){
+        catch(err){
             res.send('Error')
         }
 })

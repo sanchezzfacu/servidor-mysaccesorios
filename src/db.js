@@ -13,7 +13,6 @@ if (process.env.DATABASE_URL) {
       },
     },
     protocol: 'postgres',
-    logging:  true //false
   });
 } else {
   // the application is executed on the local machine
