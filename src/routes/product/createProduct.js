@@ -30,7 +30,7 @@ router.post('/', async (req,res) => {
         }
 
         catch(err){
-            res.send('Error')
+            console.log(err)
         }
 })
 
